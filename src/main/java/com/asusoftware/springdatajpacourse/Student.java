@@ -41,4 +41,14 @@ public class Student {
 
     @Column(name = "age", nullable = false)
     private Integer age;
+
+    // mappedBy forma una bidirectional relantionship
+    // dentro il mappedBy fa riferimento alla proprieta student della classe StudentIdCard
+    // Quindi quando riceviamo un Student riceviamo anche lo StudentIdCard
+    @OneToOne(mappedBy = "student", orphanRemoval = true)
+    private StudentIdCard studentIdCard;
 }
+
+
+// orphanRemoval: ci consente di eliminare o no le relationi su una data tabella che stiamo eliminando,
+// cioe se eliminiamo Student in questo caso, possiamo decidere se eliminare anche studentIdCard oppure no
